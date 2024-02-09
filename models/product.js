@@ -35,22 +35,22 @@ const sequelize = require("../util/database");
 const Product = sequelize.define("product", {
   id: {
     type: Sequelize.INTEGER,
-    autoincrement: true,
-    alloNull: false,
+    autoIncrement: true,
+    allowNull: false,
     primaryKey: true,
   },
   title: Sequelize.STRING,
   price: {
     type: Sequelize.DOUBLE,
-    alloNull: false,
+    allowNull: false,
   },
   imageUrl: {
     type: Sequelize.STRING,
-    alloNull: false,
+    allowNull: false,
   },
   description: {
-    type: sequelize.STRING,
-    alloNull: false,
+    type: Sequelize.STRING,
+    allowNull: false,
   },
 });
 

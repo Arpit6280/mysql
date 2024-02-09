@@ -12,7 +12,7 @@
 //sequelize
 
 const Sequelize = require("sequelize");
-
+// db name      //user     //password
 const sequelize = new Sequelize("node-complete", "root", "12345678", {
   dialect: "mysql",
   host: "localhost",
