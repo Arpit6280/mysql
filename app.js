@@ -43,6 +43,7 @@ app.use(shopRoutes);
 console.log("hi");
 app.use(errorController.get404);
 
+// https://sequelize.org/docs/v6/core-concepts/assocs/
 Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" });
 User.hasMany(Product);
 
@@ -52,8 +53,8 @@ Cart.belongsToMany(Product, { through: CartItem }); // one cart may hold many pr
 Product.belongsToMany(Cart, { through: CartItem }); //single product can be part of multiple carts
 
 sequelize
-  .sync({ force: true })
-  // .sync()
+  // .sync({ force: true })
+  .sync()
   .then((result) => {
     return User.findByPk(1);
   })
@@ -64,7 +65,11 @@ sequelize
     return user;
   })
   .then((user) => {
-    console.log(user);
+    return user.createCart();
+  })
+  .then((cart) => {
+    // console.log(user);
+
     app.listen(3000);
   })
   .catch((err) => {
